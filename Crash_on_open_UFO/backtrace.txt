@@ -1,0 +1,22 @@
+Process 64257 stopped
+* thread #1: tid = 0x28f9de, 0x000000010096b061 libfontforge-2.0.0_beta1.dylib`XMLEntryToPython + 21, queue = 'com.apple.main-thread, stop reason = EXC_BAD_ACCESS (code=1, address=0x10)
+    frame #0: 0x000000010096b061 libfontforge-2.0.0_beta1.dylib`XMLEntryToPython + 21
+libfontforge-2.0.0_beta1.dylib`XMLEntryToPython + 21:
+-> 0x10096b061:  movq   16(%r15), %rdi
+   0x10096b065:  leaq   129811(%rip), %rsi        ; "true"
+   0x10096b06c:  callq  0x100975f44               ; symbol stub for: xmlStrcmp
+   0x10096b071:  testl  %eax, %eax
+(lldb) bt
+* thread #1: tid = 0x28f9de, 0x000000010096b061 libfontforge-2.0.0_beta1.dylib`XMLEntryToPython + 21, queue = 'com.apple.main-thread, stop reason = EXC_BAD_ACCESS (code=1, address=0x10)
+    frame #0: 0x000000010096b061 libfontforge-2.0.0_beta1.dylib`XMLEntryToPython + 21
+    frame #1: 0x0000000100969cb2 libfontforge-2.0.0_beta1.dylib`LibToPython + 165
+    frame #2: 0x000000010096ace8 libfontforge-2.0.0_beta1.dylib`_UFOLoadGlyph + 3879
+    frame #3: 0x0000000100969290 libfontforge-2.0.0_beta1.dylib`SFReadUFO + 5331
+    frame #4: 0x00000001008cdfb3 libfontforge-2.0.0_beta1.dylib`_ReadSplineFont + 1775
+    frame #5: 0x00000001008cf0fc libfontforge-2.0.0_beta1.dylib`LoadSplineFont + 353
+    frame #6: 0x00000001007b5b86 libfontforge-2.0.0_beta1.dylib`ViewPostScriptFont + 14
+    frame #7: 0x00000001000bfa4a libfontforgeexe-2.0.0_beta1.dylib`MenuOpen + 204
+    frame #8: 0x000000010015fe05 libfontforgeexe-2.0.0_beta1.dylib`fontforge_main + 6843
+    frame #9: 0x00007fff8e89a5fd libdyld.dylib`start + 1
+    frame #10: 0x00007fff8e89a5fd libdyld.dylib`start + 1
+(lldb) 
